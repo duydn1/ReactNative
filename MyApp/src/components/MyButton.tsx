@@ -17,7 +17,7 @@ function MyButton({
   buttonText = 'Button',
   buttonStyle,
   ...otherProps
-}: MyButtonProps): JSX.Element {
+}: MyButtonProps) {
   return (
     <TouchableOpacity style={[styles.container, buttonStyle]} {...otherProps}>
       <Text style={styles.title}>{buttonText}</Text>
