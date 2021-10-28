@@ -1,15 +1,15 @@
-import { ReactNode } from 'react';
+import {ReactNode} from 'react';
 
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 interface HomeScreenProps {
   children: ReactNode;
 }
 
-function HomeScreen({ children }: HomeScreenProps) {
+function HomeScreen({children}: HomeScreenProps) {
   return (
-    <View style={ styles.container }>
-      <Text style={ styles.title }>HomeScreen</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>HomeScreen</Text>
       {children}
     </View>
   );
