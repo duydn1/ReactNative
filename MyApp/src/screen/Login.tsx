@@ -1,40 +1,48 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {
   Alert,
+  GestureResponderEvent,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  ScrollView,
   View,
 } from 'react-native';
-import MyButton from '../components/MyButton';
-import MyTextInput from '../components/MyTextInput';
 
-export const LoginScreen = () => {
+import MyButton from '../../src/component/MyButton';
+import MyTextInput from '../../src/component/MyTextInput';
+import {AuthContext} from '../context/AuthContext';
+
+const LoginScreen = () => {
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorUserName, setErrorUserName] = useState<string>();
   const [errorPassword, setErrorPassword] = useState<string>();
+  const authContext = useContext(AuthContext);
 
-  useEffect(() => {
-    Alert.alert('Chao mung ban da den voi Yolo system');
-  }, []);
+  // useEffect(() => {
+  //   Alert.alert('Chao mung ban da den voi Yolo system');
+  // }, []);
 
   const loginOnClick = useCallback(() => {
     console.log('Login onClick');
     Alert.alert(
       `Xin chao ban ${userName} da dang nhap thanh cong vao Yolo system`,
     );
-  }, [userName]);
+    authContext?.setUserName?.(userName);
+    authContext?.setAuth?.(true);
+    authContext?.setOrgCode?.('DLVH');
+    authContext?.setTokenCode?.('hfsjhfkashfksa-fbsadbfkjsaf');
+  }, [authContext, userName]);
 
-  const loginFBOnClick = useCallback(() => {
-    console.log('Login FB onClick');
-  }, []);
+  // const loginFBOnClick = useCallback(() => {
+  //   console.log('Login FB onClick');
+  // }, []);
 
-  const loginGGOnClick = useCallback(() => {
-    console.log('Login GG onClick');
-  }, []);
+  // const loginGGOnClick = useCallback(() => {
+  //   console.log('Login GG onClick');
+  // }, []);
 
   useEffect(() => {
     console.log('Username is: ', userName);
@@ -97,17 +105,17 @@ export const LoginScreen = () => {
           />
           <MyButton
             onPress={(event: GestureResponderEvent) => {
-              console.log(event);
+              //console.log(event);
               loginOnClick();
             }}
             disabled={!isValidLogin}
-            buttonText="Hello"
+            buttonText="Đăng nhập"
             buttonStyle={[
-              styles.myButton,
-              isValidLogin ? styles.loginButton : styles.disableButton,
+              styles.loginButtonEnable,
+              isValidLogin ? styles.loginButtonEnable : styles.loginButtonDisable,
             ]}
           />
-          <Text style={styles.highlight}>Or</Text>
+          {/* <Text style={styles.highlight}>Or</Text>
           <MyButton
             onPress={loginFBOnClick}
             buttonText="Facebook"
@@ -117,7 +125,7 @@ export const LoginScreen = () => {
             onPress={loginGGOnClick}
             buttonText="Google"
             buttonStyle={[styles.myButton, styles.loginGGButton]}
-          />
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -145,11 +153,11 @@ const styles = StyleSheet.create({
     fontSize: 48,
     color: 'green',
   },
-  myButton: {
+  loginButtonDisable: {
     backgroundColor: 'green',
   },
-  loginButton: {
-    backgroundColor: 'purple',
+  loginButtonEnable: {
+    backgroundColor: 'Blue',
   },
   loginFBButton: {
     backgroundColor: 'blue',

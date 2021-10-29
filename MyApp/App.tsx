@@ -1,18 +1,22 @@
-import React from 'react';
-// import {SafeAreaView} from 'react-native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import DrawerContent from './src/screen/DrawerContent';
-import HomeScreen from './src/screen/HomeScreen';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * Generated with the TypeScript template
+ * https://github.com/react-native-community/react-native-template-typescript
+ *
+ * @format
+ */
 
-const Drawer = createDrawerNavigator();
-const App = () => {
+import React from 'react';
+import {AuthContextProvider} from './src/context/AuthContext';
+import AppStack from './src/stack/AppStack';
+
+function App() {
   return (
-    // <SafeAreaView>
-    //   <LoginScreen />
-    // </SafeAreaView>
-    <Drawer.Navigator drawerContent={() => <DrawerContent />}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-    </Drawer.Navigator>
+    <AuthContextProvider>
+      <AppStack />
+    </AuthContextProvider>
   );
-};
+}
 export default App;
