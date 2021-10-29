@@ -16,14 +16,14 @@ const AppStack = () => {
   return (
     <NavigationContainer>
       {authContext.isAuth ? (
-        <RootStack.Navigator initialRouteName="Home">
-          <RootStack.Screen name="Home" component={HomeScreen} />
-          <RootStack.Screen name="Details" component={DetailsScreen} />
-        </RootStack.Navigator>
-        // <Drawer.Navigator initialRouteName="Home">
-        //   <Drawer.Screen name="Home" component={HomeScreen} />
-        //   <Drawer.Screen name="Details" component={DetailsScreen} />
-        // </Drawer.Navigator>
+        // <RootStack.Navigator initialRouteName="Home">
+        //   <RootStack.Screen name="Home" component={HomeScreen} />
+        //   <RootStack.Screen name="Details" component={DetailsScreen} />
+        // </RootStack.Navigator>
+        <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Details" component={DetailsScreen} />
+        </Drawer.Navigator>
       ) : (
         <AuthStack.Navigator initialRouteName="Login">
           <AuthStack.Screen name="Login" component={LoginScreen} />
