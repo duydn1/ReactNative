@@ -3,26 +3,25 @@ import * as React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {AuthContext} from '../context/AuthContext';
 import {RootStackParamList} from '../stack/Navigation';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MovieDetailScreen from './MovieDetail';
+import MovieTopRatedScreen from './MovieTopRated';
+import MoviePopularScreen from './MoviePopular';
 
+const Tab = createMaterialBottomTabNavigator();
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 export function HomeScreen({navigation, route}: HomeProps) {
   const authContext = React.useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
-      <Text>Home Screen - {authContext.userName}</Text>
-      <Text>Home Screen - {authContext.orgCode}</Text>
-      <Text>Home Screen - {authContext.tokenCode}</Text>
-      <Text>UserId - {route.params?.userId}</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details', {userId: '100'})}
-      />
-      <Button title="Logout" onPress={() => authContext?.setAuth?.(false)} />
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Movie Popular" component={MoviePopularScreen} />
+      <Tab.Screen name="Movie Top Rated" component={MovieTopRatedScreen} />
+      <Tab.Screen name="Movie Detail" component={MovieDetailScreen} />
+    </Tab.Navigator>
+
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
