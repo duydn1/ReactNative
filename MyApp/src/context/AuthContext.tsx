@@ -12,7 +12,7 @@ export type AuthContextValue = {
 };
 
 export const AuthContext = React.createContext<AuthContextValue>({
-  isAuth: false,
+  isAuth: true,
 });
 
 export const AuthContextProvider = ({children}: PropsWithChildren<any>) => {

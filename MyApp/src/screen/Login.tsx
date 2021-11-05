@@ -27,9 +27,6 @@ const LoginScreen = () => {
 
   const loginOnClick = useCallback(() => {
     console.log('Login onClick');
-    Alert.alert(
-      `Xin chao ban ${userName} da dang nhap thanh cong vao Yolo system`,
-    );
     authContext?.setUserName?.(userName);
     authContext?.setAuth?.(true);
     authContext?.setOrgCode?.('DLVH');
@@ -154,10 +151,10 @@ const styles = StyleSheet.create({
     color: 'green',
   },
   loginButtonDisable: {
-    backgroundColor: 'green',
+    backgroundColor: "#3e2465",
   },
   loginButtonEnable: {
-    backgroundColor: 'Blue',
+    backgroundColor: "#f0edf6",
   },
   loginFBButton: {
     backgroundColor: 'blue',

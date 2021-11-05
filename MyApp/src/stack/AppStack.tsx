@@ -3,9 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useContext} from 'react';
 import {AuthContext} from '../context/AuthContext';
-import {DetailsScreen} from '../screen/Details';
+import {ProfileScreen} from '../screen/Profile';
 import {HomeScreen} from '../screen/Home';
 import LoginScreen from '../screen/Login';
+import MovieDetailScreen from '../screen/MovieDetail';
+import MoviePopularScreen from '../screen/MoviePopular';
+import MovieTopRatedScreen from '../screen/MovieTopRated';
 import {AuthStackParamList, RootStackParamList} from './Navigation';
 
 const Drawer = createDrawerNavigator();
@@ -16,14 +19,8 @@ const AppStack = () => {
   return (
     <NavigationContainer>
       {authContext.isAuth ? (
-        // <RootStack.Navigator initialRouteName="Home">
-        //   <RootStack.Screen name="Home" component={HomeScreen} />
-        //   <RootStack.Screen name="Details" component={DetailsScreen} />
-        // </RootStack.Navigator>
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Details" component={DetailsScreen} />
-        </Drawer.Navigator>
+        //RootStackFC()
+        DrawerStackFC()
       ) : (
         <AuthStack.Navigator initialRouteName="Login">
           <AuthStack.Screen name="Login" component={LoginScreen} />
@@ -34,3 +31,28 @@ const AppStack = () => {
 };
 
 export default AppStack;
+function RootStackFC(): React.ReactNode {
+  return <RootStack.Navigator initialRouteName="Home">
+    <RootStack.Screen name="Home" component={HomeScreen} />
+    {/* <RootStack.Screen name="Details" component={DetailsScreen} /> */}
+    <RootStack.Screen name="MovieDetail" component={MovieDetailScreen} />
+    <RootStack.Screen
+      name="MoviePopular"
+      component={MoviePopularScreen} />
+    <RootStack.Screen
+      name="MovieTopRated"
+      component={MovieTopRatedScreen} />
+  </RootStack.Navigator>;
+}
+
+function DrawerStackFC(): React.ReactNode {
+  return <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="Profile" component={ProfileScreen} />
+
+    {/* <Drawer.Screen name="MovieDetail" component={MovieDetailScreen} />
+        <Drawer.Screen name="MoviePopular" component={MoviePopularScreen} />
+        <Drawer.Screen name="MovieTopRated" component={MovieTopRatedScreen} /> */}
+  </Drawer.Navigator>;
+}
+
