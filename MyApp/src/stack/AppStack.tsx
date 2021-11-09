@@ -3,8 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useContext} from 'react';
 import {AuthContext} from '../context/AuthContext';
-import {ProfileScreen} from '../screen/Profile';
+import ProfileScreen from '../screen/Profile';
 import {HomeScreen} from '../screen/Home';
+import Rec from '../screen/REC';
 import LoginScreen from '../screen/Login';
 import MovieDetailScreen from '../screen/MovieDetail';
 import MoviePopularScreen from '../screen/MoviePopular';
@@ -47,8 +48,10 @@ function RootStackFC(): React.ReactNode {
 
 function DrawerStackFC(): React.ReactNode {
   return <Drawer.Navigator initialRouteName="Home">
-    <Drawer.Screen name="Home" component={HomeScreen} />
     <Drawer.Screen name="Profile" component={ProfileScreen} />
+    <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="Rec" component={Rec} />
+    
 
     {/* <Drawer.Screen name="MovieDetail" component={MovieDetailScreen} />
         <Drawer.Screen name="MoviePopular" component={MoviePopularScreen} />

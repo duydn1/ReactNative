@@ -22,7 +22,7 @@ export function HomeScreen({navigation, route}: HomeProps) {
       barStyle={({backgroundColor: '#694fad'})}>
       <Tab.Screen name="Movie Popular" component={MoviePopularScreen} />
       <Tab.Screen name="Movie Top Rated" component={MovieTopRatedScreen} />
-      <Tab.Screen name="Movie Detail" component={MovieDetailScreen} />
+      <Tab.Screen name="MovieDetail" component={MovieDetailScreen} />
     </Tab.Navigator>
   );
 }
